@@ -1,6 +1,7 @@
 // TODO if totalWeight > seedsWeight -> alert
 
-import React from "react";
+import React, {useState} from "react";
+import useScanDetection from 'use-scan-detection';
 import {Formik, Form, Field, FieldArray, ErrorMessage} from "formik";
 import * as Yup from "yup";
 import "../Styles/SampleFormStyle.css";
@@ -25,49 +26,27 @@ const validationSchema = Yup.object().shape({
 
 });
 
-// const SampleBag = ({bagNumber, index}) => (
-//     <div className="sample-bag">
-//         <h4>Sample Bag {bagNumber}</h4>
-//         <div className="form-group">
-//             <label htmlFor={`sampleBags.${index}.barcode`}>Barcode:</label>
-//             <Field
-//                 type="text"
-//                 id={`sampleBags.${index}.barcode`}
-//                 name={`sampleBags.${index}.barcode`}
-//             />
-//             <ErrorMessage
-//                 className="error"
-//                 component="div"
-//                 name={`sampleBags.${index}.barcode`}
-//             />
-//         </div>
-//         <div className="form-group">
-//             <label htmlFor={`sampleBags.${index}.weight`}>Weight (grams):</label>
-//             <Field
-//                 type="text"
-//                 id={`sampleBags.${index}.weight`}
-//                 name={`sampleBags.${index}.weight`}
-//             />
-//             <ErrorMessage
-//                 className="error"
-//                 component="div"
-//                 name={`sampleBags.${index}.weight`}
-//             />
-//         </div>
-//     </div>
-// );
 
 const SampleForm = () => {
-    const [bagNumber, setBagNumber] = React.useState(1);
+    const [bagNumber, setBagNumber] = useState(1);
+    const [barcodeScan, setBarcodeScan] = useState("No Barcode Found");
+
 
     function getTotalSampleBagWeight(sampleBags) {
         return sampleBags.reduce((totalWeight, bag) => {
             return totalWeight + parseFloat(bag.weight || 0);
         }, 0);
     }
+    useScanDetection({
+        onComplete:setBarcodeScan,
+        minLength:3,
+
+    })
 
     return (
         <div className="form-container">
+
+
             <h2>Sample Form</h2>
             <Formik
                 initialValues={initialValues}
