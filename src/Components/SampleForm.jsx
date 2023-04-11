@@ -90,49 +90,6 @@ const SampleForm = () => {
                                 name="seedsWeight"
                             />
                         </div>
-
-                        {/*<FieldArray name="sampleBags">*/}
-                        {/*    {({insert, remove, push}) => (*/}
-                        {/*        <>*/}
-                        {/*            {values.sampleBags.length > 0 &&*/}
-                        {/*                values.sampleBags.map((sampleBag, index) => (*/}
-                        {/*                    <div key={index}>*/}
-                        {/*                        <SampleBag*/}
-                        {/*                            index={index}*/}
-                        {/*                            bagNumber={sampleBag.bagNumber}*/}
-                        {/*                        />*/}
-                        {/*                        <button*/}
-                        {/*                            type="button"*/}
-                        {/*                            className="btn remove"*/}
-                        {/*                            onClick={() => {*/}
-                        {/*                                remove(index);*/}
-                        {/*                                //TODO check what to do if remove*/}
-                        {/*                                // setBagNumber((prevBagNumber) => prevBagNumber -1);*/}
-                        {/*                            }}*/}
-                        {/*                        >*/}
-                        {/*                            Remove*/}
-                        {/*                        </button>*/}
-                        {/*                    </div>*/}
-                        {/*                ))}*/}
-                        {/*            <button*/}
-                        {/*                type="button"*/}
-                        {/*                className="btn add"*/}
-                        {/*                //TODO - check this*/}
-
-                        {/*                disabled={*/}
-                        {/*                    getTotalSampleBagWeight(values.sampleBags) >= values.seedsWeight &&*/}
-                        {/*                    values.sampleBags.length > 0*/}
-                        {/*                }*/}
-                        {/*                onClick={() => {*/}
-                        {/*                    push({barcode: "", weight: "", bagNumber});*/}
-                        {/*                    setBagNumber((prevBagNumber) => prevBagNumber + 1);*/}
-                        {/*                }}*/}
-                        {/*            >*/}
-                        {/*                Add Sample Bag*/}
-                        {/*            </button>*/}
-                        {/*        </>*/}
-                        {/*    )}*/}
-                        {/*</FieldArray>*/}
                         <FieldArray name="sampleBags">
                             {({insert, remove, push}) => (
                                 <>
@@ -158,9 +115,7 @@ const SampleForm = () => {
                                         ))}
                                     <button
                                         type="button"
-                                        className="btn add"
-                                        //TODO - check this
-
+                                        className={`btn add${(getTotalSampleBagWeight(values.sampleBags) >= values.seedsWeight && values.sampleBags.length > 0) ? ' disabled' : ''}`}
                                         disabled={
                                             getTotalSampleBagWeight(values.sampleBags) >= values.seedsWeight &&
                                             values.sampleBags.length > 0
@@ -188,7 +143,8 @@ const SampleForm = () => {
                         </div>
                         <button
                             type="submit"
-                            className="btn submit"
+                            // btn would be grayed and disabled as long as totalWeight != seedsWeight
+                            className={`btn submit${(getTotalSampleBagWeight(values.sampleBags) != values.seedsWeight && values.sampleBags.length > 0) ? ' disabled' : ''}`}
                             // in this setup-> disable get true if 152 in false,
                             //but once disable turns off it wont turn on again when i remove
                             disabled={
