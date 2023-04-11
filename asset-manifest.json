@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/my-formik/static/css/main.785180e2.css",
+    "main.js": "/my-formik/static/js/main.9d31a381.js",
+    "static/js/787.d91aadfd.chunk.js": "/my-formik/static/js/787.d91aadfd.chunk.js",
+    "static/media/logo.svg": "/my-formik/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/my-formik/index.html",
+    "main.785180e2.css.map": "/my-formik/static/css/main.785180e2.css.map",
+    "main.9d31a381.js.map": "/my-formik/static/js/main.9d31a381.js.map",
+    "787.d91aadfd.chunk.js.map": "/my-formik/static/js/787.d91aadfd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.785180e2.css",
+    "static/js/main.9d31a381.js"
+  ]
+}
