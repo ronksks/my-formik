@@ -1,11 +1,13 @@
 // TODO if totalWeight > seedsWeight -> alert
 
 import React, {useState} from "react";
-import useScanDetection from 'use-scan-detection';
+// import useScanDetection from 'use-scan-detection';
 import {Formik, Form, Field, FieldArray, ErrorMessage} from "formik";
 import * as Yup from "yup";
 import "../Styles/SampleFormStyle.css";
 import SampleBag from "./SampleBag";
+// import Scanner from "react-webcam-qr-scanner";
+
 
 
 const initialValues = {
@@ -37,16 +39,14 @@ const SampleForm = () => {
             return totalWeight + parseFloat(bag.weight || 0);
         }, 0);
     }
-    useScanDetection({
-        onComplete:setBarcodeScan,
-        minLength:3,
-
-    })
+    // useScanDetection({
+    //     onComplete:setBarcodeScan,
+    //     minLength:3,
+    //
+    // })
 
     return (
         <div className="form-container">
-
-
             <h2>Sample Form</h2>
             <Formik
                 initialValues={initialValues}
