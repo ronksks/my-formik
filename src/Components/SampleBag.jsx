@@ -24,7 +24,7 @@ const SampleBag = ({bagNumber, index}) => {
                     className="btn btn-secondary"
                     // onClick=
                 >
-                    Scan
+                    Scaaan
                 </button>
                 <BarcodeScannerComponent
                     width={500}
