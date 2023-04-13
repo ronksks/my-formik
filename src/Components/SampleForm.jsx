@@ -1,5 +1,6 @@
 // TODO if totalWeight > seedsWeight -> alert
 //TODO in initial submit should be grayed
+//TODO cant add bags in initial weight didnt supplied
 
 import React, {useState} from "react";
 // import useScanDetection from 'use-scan-detection';
